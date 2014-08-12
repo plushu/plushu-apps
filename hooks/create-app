@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -eo pipefail; [[ $PLUSHU_TRACE ]] && set -x
+
+app=$1
+app_dir=$PLUSHU_ROOT/apps/$app
+
+mkdir -p "$app_dir"
