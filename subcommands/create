@@ -3,10 +3,14 @@ set -eo pipefail; [[ -n "$PLUSHU_TRACE" ]] && set -x
 
 if [[ -n "$PLUSHU_APP_NAME" ]]; then
   app=$PLUSHU_APP_NAME
-elif [[ -n "$2" ]]; then
+fi
+
+if [[ -n "$2" ]]; then
   app=$2
   shift
-else
+fi
+
+if [[ -z "$app" ]]; then
   echo "Missing app name" >&2
   exit 1
 fi
