@@ -15,7 +15,7 @@ if [[ -z "$app" ]]; then
   exit 1
 fi
 
-app_dir=$PLUSHU_ROOT/apps/$app
+app_dir=$PLUSHU_APPS_DIR/$app
 
 # Create the app and its corresponding repo
 "$PLUSHU_ROOT/lib/plushook" create-app $app

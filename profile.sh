@@ -1,0 +1,1 @@
+export PLUSHU_APPS_DIR=$PLUSHU_ROOT/apps
