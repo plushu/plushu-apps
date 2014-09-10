@@ -17,6 +17,6 @@ fi
 
 app_dir=$PLUSHU_APPS_DIR/$app
 
-# Create the app and its corresponding repo
+# Create the app- any accompanying content will follow this hook.
+# Repos, for example, are handled by the app-repo-binding plugin.
 "$PLUSHU_ROOT/lib/plushook" create-app $app
-"$PLUSHU_ROOT/lib/plushook" create-repo $app
