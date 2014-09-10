@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -eo pipefail; [[ -n "$PLUSHU_TRACE" ]] && set -x
+
+app_old=$1
+app_new=$2
+
+mv "$PLUSHU_APPS_DIR/$app_old" "$PLUSHU_APPS_DIR/$app_new"

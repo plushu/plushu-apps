@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -eo pipefail; [[ -n "$PLUSHU_TRACE" ]] && set -x
+
+if [[ -n "$PLUSHU_APP_NAME" ]]; then
+  app_src=$PLUSHU_APP_NAME
+elif [[ -n "$2" ]]; then
+  app_src=$2
+  shift
+else
+  echo "Missing app name" >&2
+  exit 1
+fi
+
+app_dir=$PLUSHU_APPS_DIR/$app
+
+# Check if app exists
+if [[ ! -d "$app_dir" ]]; then
+  echo "App not found: $app" >&2
+  exit 1
+fi
+
+if [[ -n "$2" ]]; then
+  app_dest=$2
+else
+  echo "Missing new app name" >&2
+  exit 1
+fi
+
+# Fork the app- any accompanying content will follow this hook.
+# Repos, for example, are handled by the app-repo-binding plugin.
+# the build plugin is expected to hook this
+"$PLUSHU_ROOT/lib/plushook" fork-app "$app_src" "$app_dest"
+
+# Create a new release and deploy as usual
+"$PLUSHU_ROOT/lib/plushook" release-app "$app_dest"
+"$PLUSHU_ROOT/lib/plushook" deploy-app "$app_dest"

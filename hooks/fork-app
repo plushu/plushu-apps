@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -eo pipefail; [[ -n "$PLUSHU_TRACE" ]] && set -x
+
+app=$1
+app_dir=$PLUSHU_APPS_DIR/$app
+
+# Make a new, empty app, just as create-app does.
+# This does *not* copy the app directory being forked,
+# as forking an app is meant to *not* copy the things that go in the
+# app directory (such as config.env or addon data).
+
+mkdir -p "$app_dir"
+
+# If running as root
+if [[ "$EUID" == 0 ]]; then
+  # make sure plushu owns the app
+  chown -R "$PLUSHU_USER" "$app_dir"
+fi

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -eo pipefail; [[ -n "$PLUSHU_TRACE" ]] && set -x
+
+rm -rf "$PLUSHU_APPS_DIR/$1"
