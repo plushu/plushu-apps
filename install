@@ -4,5 +4,5 @@ set -eo pipefail; [[ -n "$PLUSHU_TRACE" ]] && set -x
 # create PLUSHU_APPS_DIR
 mkdir -p "$PLUSHU_ROOT/apps"
 if [[ "$EUID" == 0 ]]; then
-  chown -R "$PLUSHU_USER" "$PLUSHU_ROOT/apps"
+  chown -R "$PLUSHU_USER:" "$PLUSHU_ROOT/apps"
 fi

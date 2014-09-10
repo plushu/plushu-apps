@@ -14,5 +14,5 @@ mkdir -p "$app_dir"
 # If running as root
 if [[ "$EUID" == 0 ]]; then
   # make sure plushu owns the app
-  chown -R "$PLUSHU_USER" "$app_dir"
+  chown -R "$PLUSHU_USER:" "$app_dir"
 fi
